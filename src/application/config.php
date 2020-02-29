@@ -14,8 +14,8 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
   
-    'wechat_appid'         	=> '',
-    'wechat_secret'			 => '',
+    'wechat_appid'         	 => getenv('WECHAT_APPID') ? getenv('WECHAT_APPID') : '',
+    'wechat_secret'			 => getenv('WECHAT_SECRET') ? getenv('WECHAT_SECRET') : '',
      
     
     // 应用调试模式
