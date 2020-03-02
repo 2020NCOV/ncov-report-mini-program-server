@@ -13,6 +13,7 @@ use think\Db;
 use think\Session;
 use think\Controller;
 use \think\Config;
+use app\index\service\Http;
 
 class Getwxcode extends Controller
 {
@@ -26,8 +27,7 @@ class Getwxcode extends Controller
         $appid  = Config::get('wechat_appid');
         $secret = Config::get('wechat_secret');
         $url = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=".$appid."&secret=".$secret;
-        $HttpService = new \app\index\service\Http();
-        $res = json_decode($HttpService->get_request($url));
+        $res = json_decode(Http::get_request($url));
         $access_token = @$res->access_token;
         return $access_token;
 	}

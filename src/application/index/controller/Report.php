@@ -13,29 +13,21 @@ use think\Db;
 use think\Session;
 use think\Controller;
 use \think\Config;
+use app\index\service\Http;
 
-class Report extends Base{
-   
+class Report extends Base
+{
+
     public function save()
     {
-        $uid = input('post.uid');
-        $token = input('post.token'); 
-        $data = input('post.data');
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token', 'post.data');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
+        }
+        list($uid, $token, $data) = $paramCheckRes;
         $template_code = input('post.template_code');
-        $data = json_decode($data,true);
-      
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
-        }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
+        $data = json_decode($data, true);
+
         if (empty($data['current_district_value']) || strlen($data['current_district_value']) < 3) {
             return json([
                 'errcode'   => 1003,
@@ -86,21 +78,11 @@ class Report extends Base{
      
     public function getlastdata()
     {
-        $uid = input('post.uid');
-        $token = input('post.token'); 
-
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
+        list($uid, $token) = $paramCheckRes;
     
         //获取用户所属的机构
         $user_bind = Db::table('wx_mp_bind_info')

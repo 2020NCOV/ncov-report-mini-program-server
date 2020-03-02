@@ -13,28 +13,18 @@ use think\Db;
 use think\Session;
 use think\Controller;
 use \think\Config;
+use app\index\service\Http;
 
 class Info extends Base
 {
   
     public function getbindinfo()
     {
-        $uid = input('post.uid');
-        $token = input('post.token'); 
-      
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-         
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
+        list($uid, $token) = $paramCheckRes;
       
         $user_bind = Db::table('wx_mp_bind_info')
             ->alias("u") 

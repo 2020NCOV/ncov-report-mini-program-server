@@ -13,6 +13,7 @@ use think\Db;
 use think\Session;
 use think\Controller;
 use \think\Config;
+use app\index\service\Http;
 
 class Login extends Base{
   
@@ -27,15 +28,13 @@ class Login extends Base{
      */
     public function getcode()
     {
-        if (empty(Request::instance()->post('code'))) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:code'
-            ]);
+        $paramCheckRes = Http::checkParams('post.code');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
+        list($code) = $paramCheckRes;
 
-        $code = Request::instance()->post('code');
-        $type = Request::instance()->post('type');
+        $type = input('post.type');
     
         //根据code 获取openid和session_key
         $appid  = Config::get('wechat_appid');
@@ -109,32 +108,16 @@ class Login extends Base{
       */
   	public function getcorpname()
     {
-      	$uid =input('post.uid');
-        $token =input('post.token'); 
-        $corpid =input('post.corpid');
-
         if (empty($form_template)) {
-            $template_code="company";
+            $template_code = "company";
         }
-        if (empty($uid)) {
-            return json([
-                'errcode'        => 1003,
-                'msg'        => '参数错误:uid'
-            ]);
+
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token', 'post.corpid');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'        => 1003,
-                'msg'        => '参数错误:token'
-            ]);
-        }
-        if (empty($corpid)) {
-            return json([
-                'errcode'        => 1003,
-                'msg'        => '参数错误:corpid'
-            ]);
-        }
-      
+        list($uid, $token, $corpid) = $paramCheckRes;
+
         // 获取企业信息
         $corp = Db::table('organization')->where(['corp_code' => $corpid])->find();
         if (!empty($corp)) {
@@ -156,28 +139,11 @@ class Login extends Base{
   
     public function check_is_registered()
     {
-        $uid =input('post.uid');
-        $token =input('post.token'); 
-        $corpid =input('post.corpid');
-       
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token', 'post.corpid');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
-        if (empty($corpid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:corpid'
-            ]);
-        }
+        list($uid, $token, $corpid) = $paramCheckRes;
 
         //此处需要到用户表里面检查是否有这个企业编号和这个用户名
         $corp = Db::table('organization')->where(['corp_code' => $corpid ])->find();
@@ -209,36 +175,12 @@ class Login extends Base{
     * 如果没绑定，可以进行注册(绑定)身份
     */
     public function check_user()
-    {
-        $uid =input('post.uid');
-        $token =input('post.token'); 
-        $corpid =input('post.corpid');
-        $userid =input('post.userid');
-       
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+    {       
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token', 'post.corpid', 'post.userid');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
-        if (empty($corpid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:corpid'
-            ]);
-        }
-        if (empty($userid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:userid'
-            ]);
-        }
+        list($uid, $token, $corpid, $userid) = $paramCheckRes;
 
         $corp = Db::table('organization')->where(['corp_code' => $corpid ])->find();
         if (!empty($corp)) {
@@ -282,49 +224,11 @@ class Login extends Base{
     */
     public function register()
     {
-        $uid =input('post.uid');
-        $token =input('post.token'); 
-        $org_id =input('post.corpid');
-        $userid =input('post.userid');
-        $name =input('post.name');
-        $phone_num =input('post.phone_num');
-
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token', 'post.corpid', 'post.userid', 'post.name', 'post.phone_num');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
-        if (empty($org_id)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:corpid'
-            ]);
-        }
-        if (empty($userid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:userid'
-            ]);
-        }
-        if (empty($name)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:name'
-            ]);
-        }
-        if (empty($phone_num)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:phone_num'
-            ]);
-        }
+        list($uid, $token, $org_id, $userid, $name, $phone_num) = $paramCheckRes;
        
         //检查是否已经注册
         $corp_bind = Db::table('wx_mp_bind_info')->where(['wx_uid' => $uid,'org_id' => $org_id,'username'=> $userid,'isbind' => 1])->find();
@@ -364,21 +268,11 @@ class Login extends Base{
      
  	public function unbind()
     {
-        $uid =input('post.uid');
-        $token =input('post.token'); 
-
-        if (empty($uid)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:uid'
-            ]);
+        $paramCheckRes = Http::checkParams('post.uid', 'post.token');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
         }
-        if (empty($token)) {
-            return json([
-                'errcode'   => 1003,
-                'msg'       => '参数错误:token'
-            ]);
-        }
+        list($uid, $token) = $paramCheckRes;
 
         $corp_bind = Db::table('wx_mp_bind_info')->where(['wx_uid' => $uid])->find();
         if (!empty($corp_bind)) {
