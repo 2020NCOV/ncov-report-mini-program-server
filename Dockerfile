@@ -13,6 +13,7 @@ RUN apt-get -y update \
         libapache2-mod-php \
         php7.0 \
         php7.0-mysql \
+        php7.0-curl \
     # 清理工作
     && apt-get clean \
     && apt-get autoclean \
@@ -27,7 +28,7 @@ RUN mkdir -p /app && rm -rf /var/www/html
 COPY . /app
 WORKDIR /app
 # 链接 public 目录、创建 Log 目录并赋予权限
-RUN ln -s /app/src/public /var/www/html && mkdir ./runtime && chmod -R 777 ./runtime && chmod 755 ./docker_configs/start.sh
+RUN ln -s /app/src/public /var/www/html && mkdir ./src/runtime && chmod -R 777 ./src/runtime && chmod -R 777 ./src/public && chmod 755 ./docker_configs/start.sh
 
 EXPOSE 80
 CMD ["./docker_configs/start.sh"]
