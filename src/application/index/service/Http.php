@@ -33,5 +33,25 @@ class Http
         //显示获得的数据
         return $data;
     }
-   
+
+    /**
+     * 用于进行请求的参数检查，输入为一系列参数，格式为 'post:xxx' 或 'get:xxx'
+     * 统一使用 input 进行检查，错误时返回 1003 错误信息，某则返回参数数组，可用 is_array 判断是否有错
+     */
+    public static function checkParams(...$paramStr)
+    {
+        $res = [];
+        foreach ($paramStr as $p) {
+            $param = input($p);
+            if (empty($param)) {
+                return json([
+                    'errcode'   => 1003,
+                    'msg'       => '参数错误:' . $p
+                ]);
+            }
+            array_push($res, $param);
+        }
+        return $res;
+    }
+
 }

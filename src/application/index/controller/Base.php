@@ -11,7 +11,10 @@ namespace app\index\controller;
 use think\Controller;
 use think\Request;
 use think\Db;
-class Base extends Controller{
+use app\index\service\Http;
+
+class Base extends Controller
+{
    
    public function _initialize()
    {      
@@ -23,14 +26,18 @@ class Base extends Controller{
             Request::instance()->action()=="get_district_path")) {
             return;
         } else {
-            //检测token 
-            $uid = input('post.uid');
-            $token = input('post.token'); 
+            //检测token
+            $paramCheckRes = Http::checkParams('post.uid', 'post.token');
+            if (!is_array($paramCheckRes)) {
+                return $paramCheckRes;
+            }
+            list($uid, $token) = $paramCheckRes;
+            
             $user = Db::table('wx_mp_user')->where(['wid' => $uid, 'token'=> $token ])->find(); 
-            if(empty($user)){
+            if (empty($user)) {
                 json(array("errcode" => 1106,"msg" => "token过期，请尝试重新扫码激活并绑定个人信息"))->send();
                 exit();
-            } 
+            }
         }
    }
 

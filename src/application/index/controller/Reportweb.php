@@ -21,9 +21,11 @@ class Reportweb extends Controller
     //通过web方式传递的数据，参数为get
     public function index()
     {
-        $uid =input('param.uid');
-        $corp_code =input('get.corp_code');
-        $token = Request::instance()->param('token');
+        $paramCheckRes = Http::checkParams('param.uid', 'param:token', 'get.corp_code');
+        if (!is_array($paramCheckRes)) {
+            return $paramCheckRes;
+        }
+        list($uid, $token, $corp_code) = $paramCheckRes;
         echo $uid;
         echo $token;
         echo $corp_code;
