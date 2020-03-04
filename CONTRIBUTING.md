@@ -65,7 +65,7 @@ git clone git@github.com:XXX/ncov-report-mini-program-server.git
 cd ncov-report-mini-program-server
 ```
 
-### 4. Create a new branch
+### 3. Create a new branch
 
 Create a new branch for development.
 
@@ -75,11 +75,11 @@ git checkout -b branch-name
 
 The name of branch should be semantic, avoiding words like 'update' or 'tmp'. We suggest to use `feature/xxx`, if the modification is about to implement a new feature.
 
-### 5. Make your changes
+### 4. Make your changes
 
 Now you can create your patch, including appropriate test cases in the new branch.
 
-### 6. Commit your changes
+### 5. Commit your changes
 
 Commit your changes If your changes pass the tests. You are encouraged to use [angular commit-message-format][angular-commit-message-format] to write commit message. In this way, we could have a more trackable history and an automatically generated changelog.
 
@@ -88,7 +88,7 @@ git add .
 git commit -m "fix: add license headers (#264)"
 ```
 
-### 7. Sync your local repository with the upstream
+### 6. Sync your local repository with the upstream
 
 Keep your local repository updated with upstream repository by:
 
@@ -105,13 +105,13 @@ git add my-fix-file
 git rebase --continue
 ```
 
-### 8. Push your branch to GitHub
+### 7. Push your branch to GitHub
 
 ```shell
 git push -f origin branch-name
 ```
 
-### 9. Create a Pull Request
+### 8. Create a Pull Request
 
 In GitHub, send a pull request to `2020NCOV:ncov-report-mini-program-server`.
 
@@ -135,7 +135,7 @@ If we suggest changes then:
 
 That's it! Thank you for your contribution!
 
-### 10. After your pull request is merged
+### 9. After your pull request is merged
 
 After your pull request is merged, you can safely delete your branch and pull the changes from the upstream repository:
 
