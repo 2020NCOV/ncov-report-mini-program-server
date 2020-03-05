@@ -1,4 +1,4 @@
-# 2020NCOV-小程序服务端程序  
+# 2020NCOV-小程序服务端程序介绍 
 [![image](https://img.shields.io/badge/</>-Thinkphp-blue.svg)](https://github.com/top-think/think)
 [![image](https://img.shields.io/badge/license-Apache2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 - [项目详细介绍](#项目详细介绍)
