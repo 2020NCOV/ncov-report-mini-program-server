@@ -13,8 +13,8 @@ class Index
 {
     public function index()
     {
-        echo "https://github.com/2020NCOV/ncov-report-mini-program-server"; 
-      	return;
+        echo "https://github.com/2020NCOV/ncov-report-mini-program-server";
+        return;
     }
 
 }
