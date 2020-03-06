@@ -8,6 +8,7 @@
 // +----------------------------------------------------------------------
 
 namespace app\index\controller;
+
 use think\Request;
 use think\Db;
 use think\Session;
@@ -19,9 +20,9 @@ class District extends Controller
 
     public function index()
     {
-        return ;
+        return;
     }
-  
+
     //需要在数据库com_district表中，查询并返回
     public function getall()
     {

@@ -14,12 +14,12 @@ return [
     // | 应用设置
     // +----------------------------------------------------------------------
   
-    'wechat_appid'         	 => getenv('WECHAT_APPID') ? getenv('WECHAT_APPID') : '',
-    'wechat_secret'			 => getenv('WECHAT_SECRET') ? getenv('WECHAT_SECRET') : '',
+    'wechat_appid'         	 => getenv('WECHAT_APPID') ? getenv('WECHAT_APPID') : '你的appid',
+    'wechat_secret'			 => getenv('WECHAT_SECRET') ? getenv('WECHAT_SECRET') : '你的secret',
      
     
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => true, //上线后，请将此参数改为false
     // 应用Trace
     'app_trace'              => false,
     // 应用模式状态
