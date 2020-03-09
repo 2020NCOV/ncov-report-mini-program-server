@@ -1,0 +1,275 @@
+swagger: "2.0"
+info:
+  description: "疫情上报接口文档"
+  version: "1.0.0"
+  title: "疫情上报接口文档"
+  contact:
+    email: "492668713@qq.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "petstore.swagger.io"
+basePath: "/v2"
+tags:
+- name: "login"
+  description: "用户登录接口"
+- name: "info"
+  description: "用户个人信息接口"
+- name: "district"
+  description: "用户所在地区接口"
+- name: "report"
+  description: "用户上报信息接口"
+paths:
+  /login/check_is_registered:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "check_is_registered"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/bind:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "bind"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/register:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "register"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/unbind:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "unbind"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/getcorpname:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "getcorpname"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/getcode:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "getcode"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /login/check_user:
+    post:
+      tags:
+      - "login"
+      summary: ""
+      description: ""
+      operationId: "check_user"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /info/getmyinfo:
+    post:
+      tags:
+      - "info"
+      summary: ""
+      description: ""
+      operationId: "getmyinfo"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /info/getbindinfo:
+    post:
+      tags:
+      - "info"
+      summary: ""
+      description: ""
+      operationId: "getbindinfo"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+        400:
+          description: "Invalid Order"
+  /district/getall:
+    post:
+      tags:
+      - "district"
+      summary: ""
+      description: ""
+      operationId: "getall"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /report/getlastdata:
+    post:
+      tags:
+      - "report"
+      summary: ""
+      description: ""
+      operationId: "getlastdata"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+  /report/save:
+    post:
+      tags:
+      - "report"
+      summary: ""
+      description: ""
+      operationId: "save"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "query"
+        type: "string"
+        name: ""
+        description: ""
+        required: true
+      responses:
+        200:
+          description: "success"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
