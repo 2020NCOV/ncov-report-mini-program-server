@@ -59,6 +59,7 @@
 2020NCOV-小程序服务端程序可通过Docker进行部署，具体部署指南详见[使用Docker部署]()。
 ### 使用宝塔部署
 2020NCOV-小程序服务端程序可通过宝塔进行部署，具体部署指南详见[DEPLOY_WITH_BT](https://github.com/2020NCOV/ncov-report-mini-program-server/blob/master/DEPLOY_WITH_BT.md)。
+部署指南：https://blog.csdn.net/weixin_44735933/article/details/104895492
 ## 交流方式
 点击加入[钉钉群组]()。  
 线上交流，后期课程以及相关资源将会在钉钉群组进行发布，请及时加入并关注信息更新。
