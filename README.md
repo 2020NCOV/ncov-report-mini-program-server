@@ -56,7 +56,7 @@
 ## 如何部署
 目前提供两种部署方式：
 ### 使用Docker部署
-2020NCOV-小程序服务端程序可通过Docker进行部署，具体部署指南详见[使用Docker部署]()。
+2020NCOV-小程序服务端程序可通过Docker进行部署，具体部署指南详见[使用Docker部署](./DEPLOY_WITH_DOCKER.md)。
 ### 使用宝塔部署
 2020NCOV-小程序服务端程序可通过宝塔进行部署，具体部署指南详见[DEPLOY_WITH_BT](https://github.com/2020NCOV/ncov-report-mini-program-server/blob/master/DEPLOY_WITH_BT.md)。
 部署指南：https://blog.csdn.net/weixin_44735933/article/details/104895492
